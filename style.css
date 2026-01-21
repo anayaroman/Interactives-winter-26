@@ -1,0 +1,27 @@
+h1 {
+    color: pink
+}
+
+body {
+    width: 75%;
+    margin: auto;
+}
+
+@media (orientation: portrait) {
+    body {
+        width: 100%;
+        font-size: 2em;
+    }
+}
+
+#byline {
+    font-family: 'sans-serif',
+
+}
+
+div {
+    border: solid 1px gray;
+}
+
+/* for phones *? 
+@media(orientation: porttrait
