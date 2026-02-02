@@ -1,0 +1,91 @@
+<html>
+
+<head>
+  <title>Northwestern building Filter</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 20px;
+      height: 100%;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 18px;
+    }
+
+    .Medill {
+      background: #97608e;
+      color: #ffffff;
+    }
+
+    .Mccormick {
+      background: #2a9d8f;
+      color: #fff;
+    }
+
+    .Weinberg {
+      background: #e76f51;
+      color: #fff;
+    }
+
+    .item {
+      padding: 15px;
+      margin: 10px 0;
+      font-size: 20px;
+      border-radius: 5px;
+    }
+
+    .Medill.item {
+      background: #b863ae;
+    }
+
+    .Mccormick.item {
+      background: #2a9d8f;
+    }
+
+    .Weinberg.item {
+      background: #e76f51;
+    }
+
+    .item.hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="filter('all')">All</button>
+  <button onclick="filter('Medill')">Medill</button>
+  <button onclick="filter('Mccormick')">Mccormick</button>
+  <button onclick="filter('Weinberg')">Weinberg</button>
+
+  <div class="item Medill">Fisk Hall</div>
+  <div class="item Medill">Mccormick Foundation</div>
+  <div class="item Medill">Locy Hall</div>
+
+  <div class="item Mccormick">Tech</div>
+  <div class="item Mccormick">Ford</div>
+  <div class="item Mccormick">Annenberg</div>
+
+  <div class="item Weinberg">Kresgee</div>
+  <div class="item Weinberg">Harris Hall</div>
+  <div class="item Weinberg">University Hall</div>
+
+  <script>
+    function filter(cat) {
+      let items = document.querySelectorAll('.item');
+      items.forEach(item => {
+        if (cat === 'all' || item.classList.contains(cat)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
