@@ -85,6 +85,15 @@
         }
       });
     }
+    function restartQuiz() {
+      document.getElementById("quiz").style.display = "block";
+      document.getElementById("results").style.display = "none";
+
+      let items = document.querySelectorAll('.item');
+      items.forEach(item => {
+        item.classList.remove('hidden');
+      });
+    }
   </script>
 </body>
 

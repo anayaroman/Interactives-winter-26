@@ -1,0 +1,150 @@
+<html>
+
+<head>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<div id="quiz">
+
+    <body>
+
+        <h1>Find a new artist to listen to based on your own personal style! </h1>
+
+
+        <button onclick="filter('all')">All</button>
+        <button onclick="filter('Indie')">Indie</button>
+        <button onclick="filter('Rave')">Rave</button>
+        <button onclick="filter('Athletic')">Athletic</button>
+
+        <div class="item Indie">Clairo</div>
+        <div class="item Indie">Japanese Breakfast</div>
+        <div class="item Indie">Wallows</div>
+
+        <div class="item Rave">Charli XCX</div>
+        <div class="item Rave">Dom Dolla</div>
+        <div class="item Rave">Troye Sivan</div>
+
+        <div class="item Athletic">Kendrick Lamar</div>
+        <div class="item Athletic">Tate McCrae</div>
+        <div class="item Athletic">Don Toliver</div>
+        <script>
+            function filter(cat) {
+                let items = document.querySelectorAll('.item');
+                items.forEach(item => {
+                    if (cat === 'all' || item.classList.contains(cat)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            }
+        </script>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 20px;
+                height: 100%;
+            }
+
+            button {
+                padding: 10px 20px;
+                margin: 5px;
+                font-size: 18px;
+            }
+
+            .Indie.item {
+                background: #97608e;
+                color: #740eb8;
+            }
+
+            .Rave.item {
+                background: #2a9d8f;
+                color: #fff;
+            }
+
+            .Athletic.item {
+                background: #e76f51;
+                color: #fff;
+            }
+
+            .Weinberg {
+                background: l#e76f51;
+                color: #fff;
+            }
+
+            .item {
+                padding: 15px;
+                margin: 10px 0;
+                font-size: 20px;
+                border-radius: 5px;
+            }
+
+            .Indie.item {
+                background: #b863ae;
+            }
+
+            .Rave.item {
+                background: #2a9d8f;
+            }
+
+            .Athletic.item {
+                background: #e76f51;
+            }
+
+            .item.hidden {
+                display: none;
+            }
+        </style>
+        </head>
+
+
+
+
+    </body>
+
+    <div id="results" style="display:none;">
+        <h2>Your artist match</h2>
+        <div class="item Indie">Clairo</div>
+        <div class="item Indie">Japanese Breakfast</div>
+        <div class="item Indie">Wallows</div>
+
+        <div id="results" style="display:none;">
+            <h2>Your artist match</h2>
+            <div class="item Rave">Charli XCX</div>
+            <div class="item Rave">Dom Dolla</div>
+            <div class="item Rave">Troye Sivan</div>
+
+            id="results" style="display:none;">
+            <h2>Your artist match</h2>
+            <div class="item Athletic">Kendrick Lamar</div>
+            <div class="item Athletic">Tate McCrae</div>
+            <div class="item Athletic">Don Toliver</div>
+        </div>
+
+        <script>
+            function ShowResult(category) {
+                document.getElementById("quiz").style.display = "none";
+                document.getElementById("results").style.display = "block";
+                let items = document.querySelectorAll('.item');
+                items.forEach(item => {
+                    if (item.classList.contains(category)) {
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            }
+            function restartQuiz() {
+                document.getElementById("quiz").style.display = "block";
+                document.getElementById("results").style.display = "none";
+
+                let items = document.querySelectorAll(' .item')
+                items.forEach(item => {
+                    item.style.display = "block";
+                });
+            }
+        </script>
+        </body>
+
+</html>

@@ -1,0 +1,150 @@
+<html>
+
+<head>
+    <title>Music Personality Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: skyblue
+        }
+
+        .question {
+            margin: 20px 0;
+            color: darkblue
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: skyblue
+        }
+
+        #result {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .artist {
+            margin: 15px 0;
+            font-size: 20px;
+        }
+
+        .artist a {
+            text-decoration: none;
+            color: #1DB954;
+            font-weight: bold;
+        }
+
+        .artist a:hover {
+            text-decoration: underline;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>What Upcoming Artist Matches Your Personality?</h1>
+    <!--- The div creates a container for the quiz questions -->
+    <div id="quiz">
+
+        <div class="question">
+            <h3>1. Your ideal Friday night?</h3>
+            <button onclick="answer('Indie')">Journaling & candles</button>
+            <button onclick="answer('Rave')">Clubbing downtown</button>
+            <button onclick="answer('Athletic')">Gym session</button>
+        </div>
+
+        <div class="question">
+            <h3>2. Pick a color vibe:</h3>
+            <button onclick="answer('Indie')">Muted pastels</button>
+            <button onclick="answer('Rave')">Neon lights</button>
+            <button onclick="answer('Athletic')">Black & red</button>
+        </div>
+
+        <div class="question">
+            <h3>3. Your personality?</h3>
+            <button onclick="answer('Indie')">Emotional & reflective</button>
+            <button onclick="answer('Rave')">Bold & energetic</button>
+            <button onclick="answer('Athletic')">Driven & confident</button>
+        </div>
+
+        <button onclick="showResult()">See My Result</button>
+
+    </div>
+    <!--- This div contains the results of the quiz -->
+    <div id="result">
+        <h2 id="resultTitle"></h2>
+        <div id="artists"></div>
+        <br>
+        <button onclick="restart()">Take Quiz Again</button>
+    </div>
+
+    <script>
+        let scores = {
+            Indie: 0,
+            Rave: 0,
+            Athletic: 0
+        };
+
+        function answer(type) {
+            scores[type]++;
+        }
+
+        function showResult() {
+            let winner = Object.keys(scores).reduce((a, b) =>
+                scores[a] > scores[b] ? a : b
+            );
+
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("result").style.display = "block";
+
+            let title = document.getElementById("resultTitle");
+            let artistsDiv = document.getElementById("artists");
+
+            if (winner === "Indie") {
+                title.innerHTML = "You're Indie & Artsy <br> Click for Spotify Link! 🎨";
+                artistsDiv.innerHTML = `
+                <div class="artist"><a href="https://open.spotify.com/artist/3l0CmX0FuQjFxr8SK7Vqag" target="_blank">Clairo</a></div>
+                <div class="artist"><a href="https://open.spotify.com/artist/7MoIc5s9KXolCBH1fy9kkw" target="_blank">Japanese Breakfast</a></div>
+                <div class="artist"><a href="https://open.spotify.com/artist/0NIPkIjTV8mB795yEIiPYL" target="_blank">Wallows</a></div>
+            `;
+            }
+
+            if (winner === "Rave") {
+                title.innerHTML = "You're Electric & Party-Driven <br> Click for Spotify Link! ⚡";
+                artistsDiv.innerHTML = `
+                <div class="artist"><a href="https://open.spotify.com/artist/25uiPmTg16RbhZWAqwLBy5" target="_blank">Charli XCX</a></div>
+                <div class="artist"><a href="https://open.spotify.com/artist/6S3KljEiIOWoLMUyZrkQUc" target="_blank">Dom Dolla</a></div>
+                <div class="artist"><a href="https://open.spotify.com/artist/3WGpXCj9YhhfX11TToZcXP" target="_blank">Troye Sivan</a></div>
+            `;
+            }
+
+            if (winner === "Athletic") {
+                title.innerHTML = "You're Confident & Motivated <br> Click for Spotify link!💪";
+                artistsDiv.innerHTML = `
+                <div class="artist"><a href="https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg" target="_blank">Kendrick Lamar</a></div>
+                <div class="artist"><a href="https://open.spotify.com/artist/45dkTj5sMRSjrmBSBeiHym" target="_blank">Tate McRae</a></div>
+                <div class="artist"><a href="https://open.spotify.com/artist/4Gso3d4CscCijv0lmajZWs" target="_blank">Don Toliver</a></div>
+            `;
+            }
+        }
+
+        function restart() {
+            scores = { Indie: 0, Rave: 0, Athletic: 0 };
+            document.getElementById("quiz").style.display = "block";
+            document.getElementById("result").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
